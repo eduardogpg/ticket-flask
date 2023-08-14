@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+<section class="relative py-10 overflow-hidden">
+  <div class="relative container px-4 mx-auto">
+    <div class="max-w-2xl mx-auto mb-20 text-center">
+      <h1 class="font-heading text-5xl xs:text-5xl md:text-5xl font-bold text-gray-900 mb-6">
+        <span>Crea un nuevo Evento</span>
+      </h1>
+      <p class="max-w-md mx-auto text-lg text-gray-500">Publica un nuevo evento en la comunidad</p>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 py-18 xs:px-12 sm:p-24 bg-orange-50 rounded-4xl">
+      <form action="">
+        <div class="mb-6">
+          <label class="block mb-1.5 text-sm text-gray-900 font-semibold" for="">Nombre del evento</label>
+          <input class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg" type="text">
+        </div>
+        <div class="mb-6">
+          <label class="block mb-1.5 text-sm text-gray-900 font-semibold" for="">Número máximo de participantes</label>
+          <input class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg" type="text">
+        </div>
+        <div class="mb-7">
+          <div class="flex mb-1.5 items-center justify-between">
+            <label class="block text-sm text-gray-900 font-semibold" for="">Dirección</label>
+          </div>
+          <div class="relative">
+            <input class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg" type="text">
+          </div>
+        </div>
+        <div class="mb-6">
+          <label class="block mb-1.5 text-sm text-gray-900 font-semibold" for="">Link del sitio web</label>
+          <input class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg" type="text">
+        </div>
+        <div class="mb-6">
+          <label class="block mb-1.5 text-sm text-gray-900 font-semibold" for="">Descripción</label>
+          <textarea class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg" type="text">
+          </textarea>
+        </div>
+        <button class="relative group block w-full mb-6 py-3 px-5 text-center text-sm font-semibold text-orange-50 bg-orange-900 rounded-full overflow-hidden" type="submit">
+          <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+          <span class="relative">Publicar</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
