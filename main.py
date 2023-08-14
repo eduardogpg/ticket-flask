@@ -1,5 +1,4 @@
-from app import create_app
-from config.develop import Config
+from app import make_app
 
-server = create_app(Config)
+server = make_app()
 server.run()
