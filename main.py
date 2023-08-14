@@ -1,4 +1,4 @@
 from app import make_app
 
 server = make_app()
-server.run()
+server.run(debug=True)

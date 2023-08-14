@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ticket facilito</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500;1,600;1,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.min.css') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="shuffle-for-tailwind.png">
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body class="antialiased bg-body text-body font-body">
+  {% block content %}
+  {% endblock %}
+</body>
