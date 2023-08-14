@@ -17,3 +17,23 @@ def login():
 @main_blueprint.route('/register')
 def register():
     return render_template('register.html')
+
+
+@main_blueprint.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
+
+@main_blueprint.route('/ticket')
+def ticket():
+    return render_template('ticket.html')
+
+
+@main_blueprint.route('/event/new')
+def event_new():
+    return render_template('events/new.html')
+
+
+@main_blueprint.route('/event/show')
+def event_show():
+    return render_template('events/show.html')
