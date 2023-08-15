@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html' %}
+{% extends 'layouts/index.html' %}
 {% block content %}
 <section class="relative pb-20 overflow-hidden">
   <img class="absolute top-0 right-0 mt-64 sm:mt-80 lg:mt-64 w-2/5 animate-moveHand" src="saturn-assets/images/headers/robot-hand-header.png" alt="">
@@ -38,7 +38,8 @@
           <p class="md:text-xl text-gray-900 font-semibold">Ven y unute a la mejor comunidad de programación de America Latina.</p>
         </div>
       </div>
-      <a class="relative group inline-block w-full sm:w-auto py-4 px-6 mb-24 text-white font-semibold rounded-md bg-orange-900 overflow-hidden" href="#">
+      <a class="relative group inline-block w-full sm:w-auto py-4 px-6 mb-24 text-white font-semibold rounded-md bg-orange-900 overflow-hidden" 
+        href="{{ url_for('main.dashboard') }}">
         <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
         <div class="relative flex items-center justify-center">
           <span class="mr-4">Conoce más</span>
