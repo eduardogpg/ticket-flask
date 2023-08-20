@@ -12,11 +12,11 @@
     </div>
     <div class="max-w-2xl mx-auto mb-15 text-center">
       <nav class="flex border-b border-orange-500">
-        <a href="{{ url_for('main.events_events') }}" class="mr-20 px-4 py-2 text-sm font-medium text-gray-500 hover:border-b-2 hover:border-gray-500">
-          Mis futuras participaciones
-        </a>
-        <a href="{{ url_for('main.events_admin') }}" class="mr-20 px-4 py-2 text-sm font-medium text-gray border-b-2 hover:border-gray-500">
-          Mis anuncios
+        <a href="{{ url_for('main.events_events') }}" class="mr-20 px-4 py-2 text-sm font-medium text-gray border-b-2 hover:border-gray-500">
+            Mis futuras participaciones
+          </a>
+        <a href="{{ url_for('main.events_admin') }}" class="mr-20 px-4 py-2 text-sm font-medium text-gray-500 hover:border-b-2 hover:border-gray-500">
+            Mis anuncios
         </a>
       </nav>
     </div>
@@ -38,9 +38,6 @@
                 href="{{ url_for('main.events_show', id=event.id) }}">
                 <span class="mr-2">Ver más</span>
               </a>
-              <button class="inline-block text-xl font-semibold text-red-900 hover:text-gray-900 ml-4">
-              <span class="mr-2">Cancelar</span>
-              </button>
             </div>
           </div>
         </div>

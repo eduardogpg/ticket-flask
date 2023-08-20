@@ -129,3 +129,12 @@ def events_admin():
     events = user.events
         
     return render_template('events/admin.html', form=user, events=events)
+
+
+@main_blueprint.route('/events/my/events')
+@login_required
+def events_events():
+    user = User.get(User.id == session['user_id'])
+    events = Event.select().join(Ticket).where(Ticket.user == user)
+
+    return render_template('events/events.html', form=user, events=events)
