@@ -29,11 +29,16 @@ def ticket():
     return render_template('ticket.html')
 
 
-@main_blueprint.route('/event/new')
-def event_new():
+@main_blueprint.route('/events/new')
+def events_new():
     return render_template('events/new.html')
 
 
-@main_blueprint.route('/event/show')
-def event_show():
+@main_blueprint.route('/events/show')
+def events_show():
     return render_template('events/show.html')
+
+
+@main_blueprint.route('/events/admin')
+def events_admin():
+    return render_template('events/admin.html')
