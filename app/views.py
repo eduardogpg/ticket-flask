@@ -156,3 +156,22 @@ def events_cancel(id):
     return redirect(url_for('main.events_events'))
 
 
+@main_blueprint.route('/events/<int:id>/edit', methods=['GET', 'POST'])
+@login_required
+def events_edit(id):
+    user = User.get(User.id == session['user_id'])
+    event = Event.get(Event.id == id)
+
+    form = EventForm(obj=event) 
+
+    if not user == event.user:
+        return redirect(url_for('main.dashboard'))
+
+    if form.validate_on_submit():
+        form.populate_obj(event)
+        event.save()
+
+    # flash('Evento actualizado exitosamente', 'success')
+    return render_template('events/edit.html', form=form, event=event)
+
+

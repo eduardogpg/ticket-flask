@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+{% from 'macros.html' import render_field %}
+{% block content %}
+<section class="relative overflow-hidden">
+  <div class="relative container px-4 mx-auto">
+    <div class="max-w-2xl mx-auto mb-20 text-center">
+      <h1 class="font-heading text-5xl xs:text-5xl md:text-5xl font-bold text-gray-900 mb-6">
+        <span>Edditar Evento</span>
+      </h1>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 py-18 xs:px-12 sm:p-24 bg-orange-50 rounded-4xl">
+      
+      <form  method="POST">
+        {{ form.hidden_tag() }}
+        {{ render_field(form.name) }}
+        {{ render_field(form.event_date,  input="date") }}
+        {{ render_field(form.participants) }}
+        {{ render_field(form.address) }}
+        
+        {{ render_field(form.description) }}
+        
+        <button class="relative group block w-full mb-6 py-3 px-5 text-center text-sm font-semibold text-orange-50 bg-orange-900 rounded-full overflow-hidden" type="submit">
+          <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+          <span class="relative">Publicar</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
