@@ -29,6 +29,7 @@ class Event(db.Model):
     web_page = db.Column(db.String(255))
     address = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    event_at = db.Column(db.DateTime)  
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
     user = db.relationship('User', backref=db.backref('user', lazy=True))
     
@@ -40,8 +41,6 @@ class Ticket(db.Model):
     __tablename__ = 'tickets' 
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(200))
-    description = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
