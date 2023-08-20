@@ -38,9 +38,9 @@
                 href="{{ url_for('main.events_show', id=event.id) }}">
                 <span class="mr-2">Ver más</span>
               </a>
-              <button class="inline-block text-xl font-semibold text-red-900 hover:text-gray-900 ml-4">
+              <a  href="{{ url_for('main.events_cancel', id=event.id) }}"class="inline-block text-xl font-semibold text-red-900 hover:text-gray-900 ml-4">
               <span class="mr-2">Cancelar</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>

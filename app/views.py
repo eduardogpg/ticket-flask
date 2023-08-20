@@ -138,3 +138,21 @@ def events_events():
     events = Event.select().join(Ticket).where(Ticket.user == user)
 
     return render_template('events/events.html', form=user, events=events)
+
+
+
+@main_blueprint.route('/events/<int:id>/cancel')
+@login_required
+def events_cancel(id):
+    user = User.get(User.id == session['user_id'])
+    event = Event.get(Event.id == id)
+
+    if not user == event.user:
+        return redirect(url_for('main.dashboard'))
+
+    Ticket.delete().where(Ticket.event == event).execute()
+    event.delete_instance()
+    
+    return redirect(url_for('main.events_events'))
+
+
