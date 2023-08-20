@@ -9,6 +9,7 @@ from . import db
 
 from .models import User
 from .models import Event
+from .models import Ticket
 
 from .forms import EventForm
 from .forms import RegisterForm
@@ -56,9 +57,31 @@ def dashboard():
     return render_template('dashboard.html', events=events)
 
 
-@main_blueprint.route('/ticket')
-def ticket():
+@main_blueprint.route('/ticket/<int:id>')
+def ticket_show(id):
     return render_template('ticket.html')
+
+
+@main_blueprint.route('/events/<int:id>/tickets/new', methods=['GET'])
+@login_required
+def ticket_new(id):
+    event = Event.query.get(id)
+    user_id = session['user_id']
+
+    if event.tickets.count() > 10:
+        return redirect(url_for('main.event_show', id=event.id))
+
+    ticket = Ticket(
+        title='Nuevo ticket',
+        description='Nueva descripción',
+        user_id=user_id,
+        event_id=event.id
+    )
+
+    db.session.add(ticket)
+    db.session.commit()
+
+    return redirect(url_for('main.ticket_show', id=event.id))
 
 
 @main_blueprint.route('/events/new', methods=['GET', 'POST'])
@@ -90,5 +113,7 @@ def event_show(id):
     
     if not event:
         pass
-
-    return render_template('events/show.html', event=event)
+    
+    ticket = event.tickets.filter(Ticket.user_id == session['user_id']).first()
+    available_sets = event.tickets.count() < 1
+    return render_template('events/show.html', event=event, ticket=ticket, available_sets=available_sets)

@@ -46,8 +46,8 @@ class Ticket(db.Model):
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
 
-    user = db.relationship('User', backref=db.backref('tickets', lazy=True))
-    event = db.relationship('Event', backref=db.backref('tickets', lazy=True))
+    user = db.relationship('User', backref=db.backref('tickets', lazy='dynamic'))
+    event = db.relationship('Event', backref=db.backref('tickets', lazy='dynamic'))
     
     def __repr__(self):
         return f"<Ticket {self.title}>"
