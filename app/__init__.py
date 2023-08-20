@@ -1,24 +1,31 @@
+import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from peewee import Database, MySQLDatabase
+from dotenv import load_dotenv
 
-db = SQLAlchemy()
+db = Database
+
+load_dotenv()
 
 def make_app():
     global db
 
     app = Flask(__name__)
+    db = MySQLDatabase(
+            'tickets', 
+            user='root', 
+            password=os.getenv("DB_PASWORD"),
+            host='localhost',
+            port=3306)
     
-    app.config['SECRET_KEY'] = 'your secret key'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/tickets'
-    
-    db.init_app(app)
+    app.secret_key = os.getenv("SECRET_KEY"),
 
     from .views import main_blueprint
     app.register_blueprint(main_blueprint)
 
-    from .models import User, Ticket, Event
+    from .models import User, Event
     
     with app.app_context():
-        db.create_all()
+        db.create_tables([User, Event])
 
     return app

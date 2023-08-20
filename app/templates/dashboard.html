@@ -19,8 +19,8 @@
           </div>
           <div class="w-full lg:w-9/12 px-4 mb-10 lg:mb-0">
             <div class="max-w-2xl">
-              <span class="block text-gray-400 mb-1 text-2xl">{{ event.title }}</span>
-              <span class="block text-gray-400 mb-1 text-sm">Jul 20, 2022</span>
+              <span class="block text-gray-400 mb-1 text-2xl">{{ event.name }}</span>
+              <span class="block text-gray-400 mb-1 text-sm">{{ event.formatted_event_date }}</span>
               <p class="text-2xl font-semibold text-gray-900">
                 {{ event.description }}
               </p>
@@ -28,7 +28,7 @@
           </div>
           <div class="w-full lg:w-auto px-4 ml-auto text-right">
             <a class="inline-flex items-center text-xl font-semibold text-orange-900 hover:text-gray-900" 
-              href="{{ url_for('main.event_show', id=event.id) }}"
+              href="{{ url_for('main.events_show', id=event.id) }}"
               >
               <span class="mr-2">Read</span>
               <svg class="animate-bounce" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,14 +39,16 @@
           </div>
         </div>
       </div>
-      <div class="pt-12 border-t-2 border-gray-100 text-center">
-        <a class="relative group inline-block py-4 px-7 font-semibold text-orange-900 hover:text-orange-50 rounded-full bg-orange-50 transition duration-300 overflow-hidden" href="#">
-          <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
-          <span class="relative">Muestrame más eventos</span>
-        </a>
-      </div>
     </div>
     {% endfor %}
+
+    <div class="pt-12 border-t-2 border-gray-100 text-center">
+      <a class="relative group inline-block py-4 px-7 font-semibold text-orange-900 hover:text-orange-50 rounded-full bg-orange-50 transition duration-300 overflow-hidden" href="#">
+        <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+        <span class="relative">Muestrame más eventos</span>
+      </a>
+    </div>
+    
   </div>
 </section>
 {% endblock %}

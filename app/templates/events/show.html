@@ -3,7 +3,7 @@
 <section class="relative overflow-hidden">
   <div class="relative container px-4 mx-auto">
     <div class="max-w-2xl mx-auto mb-20 text-center">
-      <h1 class="font-heading text-5xl xs:text-5xl md:text-5xl font-bold text-gray-900 mb-6"><span>{{ event.title }}</span></h1>
+      <h1 class="font-heading text-5xl xs:text-5xl md:text-5xl font-bold text-gray-900 mb-6"><span>{{ event.name }}</span></h1>
       <p class="max-w-md mx-auto text-lg text-gray-500">{{ event.user.username }}.</p>
     </div>
     <div class="max-w-7xl mx-auto px-8 py-18 xs:px-12 sm:p-24 bg-orange-50 rounded-4xl">
@@ -15,7 +15,7 @@
               </div>
               <div>
                 <h3 class="text-xl font-semibold">Fecha del evento</h3>
-                <span class="text-base text-gray-400">17 de Agosto de 2023</span>
+                <span class="text-base text-gray-400">{{ event.formatted_event_date }}</span>
               </div>
             </div>
             <div class="flex items-center pb-12 mb-12 border-b border-gray-200 border-opacity-50">
@@ -30,9 +30,9 @@
               <div class="flex flex-shrink-0 w-15 h-15 mr-6 items-center justify-center bg-yellow-300 rounded-full">
               </div>
               <div>
-                <h3 class="text-xl font-semibold">Página web</h3>
+                <h3 class="text-xl font-semibold">Lugares disponibles</h3>
                 <span class="text-base text-gray-400">
-                  <a href="{{ event.web_page }}" target="_blank">{{ event.web_page }}</a>
+                  <a href="{{ event.web_page }}" target="_blank">{{ event.available_sets }}</a>
                   </span>
               </div>
             </div>
@@ -59,7 +59,7 @@
                     </span>
                   </div>
                 </a>
-              {% elif available_sets  %}
+              {% elif event.available_sets  %}
                 <a class="relative group inline-block w-full sm:w-auto py-4 px-6 text-orange-50 font-semibold bg-orange-900 rounded-full overflow-hidden" href="{{ url_for('main.ticket_new', id=event.id) }}">
                   <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                   <div class="relative flex items-center justify-center">

@@ -14,10 +14,11 @@
       
       <form  method="POST">
         {{ form.hidden_tag() }}
-        {{ render_field(form.title) }}
-        {{ render_field(form.max_participants) }}
-        {{ render_field(form.web_page) }}
+        {{ render_field(form.name) }}
+        {{ render_field(form.event_date,  input="date") }}
+        {{ render_field(form.participants) }}
         {{ render_field(form.address) }}
+        
         {{ render_field(form.description) }}
         
         <button class="relative group block w-full mb-6 py-3 px-5 text-center text-sm font-semibold text-orange-50 bg-orange-900 rounded-full overflow-hidden" type="submit">
