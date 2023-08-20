@@ -84,6 +84,11 @@ def event_new():
     return render_template('events/new.html', form=form)
 
 
-@main_blueprint.route('/event/show')
-def event_show():
-    return render_template('events/show.html')
+@main_blueprint.route('/event/<int:id>/show')
+def event_show(id):
+    event = Event.query.get(id)
+    
+    if not event:
+        pass
+
+    return render_template('events/show.html', event=event)

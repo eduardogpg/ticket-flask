@@ -30,7 +30,7 @@ class Event(db.Model):
     address = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
-    
+    user = db.relationship('User', backref=db.backref('user', lazy=True))
     
     def __repr__(self):
         return f"<Event {self.title}>"

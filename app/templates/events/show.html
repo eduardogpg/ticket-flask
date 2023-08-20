@@ -1,10 +1,10 @@
 {% extends 'layouts/base.html' %}
 {% block content %}
-<section class="relative py-10 overflow-hidden">
+<section class="relative overflow-hidden">
   <div class="relative container px-4 mx-auto">
     <div class="max-w-2xl mx-auto mb-20 text-center">
-      <h1 class="font-heading text-5xl xs:text-5xl md:text-5xl font-bold text-gray-900 mb-6"><span>Nombre de evento</span></h1>
-      <p class="max-w-md mx-auto text-lg text-gray-500">Autor del evento.</p>
+      <h1 class="font-heading text-5xl xs:text-5xl md:text-5xl font-bold text-gray-900 mb-6"><span>{{ event.title }}</span></h1>
+      <p class="max-w-md mx-auto text-lg text-gray-500">{{ event.user.username }}.</p>
     </div>
     <div class="max-w-7xl mx-auto px-8 py-18 xs:px-12 sm:p-24 bg-orange-50 rounded-4xl">
       <div class="flex flex-wrap -mx-4">
@@ -15,7 +15,7 @@
               </div>
               <div>
                 <h3 class="text-xl font-semibold">Fecha del evento</h3>
-                <span class="text-sm text-gray-400">17 de Agosto de 2023</span>
+                <span class="text-base text-gray-400">17 de Agosto de 2023</span>
               </div>
             </div>
             <div class="flex items-center pb-12 mb-12 border-b border-gray-200 border-opacity-50">
@@ -23,7 +23,7 @@
               </div>
               <div>
                 <h3 class="text-xl font-semibold">Dirección</h3>
-                <span class="text-sm text-gray-400">We are not tolerant about taste</span>
+                <span class="text-base text-gray-400">{{ event.address }}</span>
               </div>
             </div>
             <div class="flex items-center">
@@ -31,7 +31,9 @@
               </div>
               <div>
                 <h3 class="text-xl font-semibold">Página web</h3>
-                <span class="text-sm text-gray-400">www.codigofacilito.com</span>
+                <span class="text-base text-gray-400">
+                  <a href="{{ event.web_page }}" target="_blank">{{ event.web_page }}</a>
+                  </span>
               </div>
             </div>
           </div>
@@ -40,9 +42,9 @@
           <div class="flex flex-col h-full justify-between lg:max-w-md ml-auto">
             <div class="mb-12">
               <h3 class="text-3xl md:text-5xl font-bold mb-5">
-                <span>Overview</span>
+                <span>Conoce más</span>
               </h3>
-              <p class="text-gray-900">Nunc et tellus non erat accumsan aliquam eget non mi. Integer fringilla pellentesque finibus.</p>
+              <p class="text-gray-900">{{ event.description }}</p>
             </div>
             <div class="flex flex-wrap items-center justify-between">
               <a class="relative group inline-block w-full sm:w-auto py-4 px-6 text-orange-50 font-semibold bg-orange-900 rounded-full overflow-hidden" href="#">

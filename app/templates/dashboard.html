@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 {% block content %}
-<section class="relative py-20 overflow-hidden">
+<section class="relative overflow-hidden">
   <img class="absolute top-0 right-0 xl:mt-10 -mr-24 lg:-mr-0" src="saturn-assets/images/blog/star-circle-right.svg" alt="">
   <img class="hidden sm:block absolute bottom-0 left-0 -mb-48 lg:mb-0" src="saturn-assets/images/blog/blue-light-left.png" alt="">
   <div class="relative container px-4 mx-auto">
@@ -28,7 +28,9 @@
             </div>
           </div>
           <div class="w-full lg:w-auto px-4 ml-auto text-right">
-            <a class="inline-flex items-center text-xl font-semibold text-orange-900 hover:text-gray-900" href="#">
+            <a class="inline-flex items-center text-xl font-semibold text-orange-900 hover:text-gray-900" 
+              href="{{ url_for('main.event_show', id=event.id) }}"
+              >
               <span class="mr-2">Read</span>
               <svg class="animate-bounce" width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.33301 14.6668L14.6663 1.3335" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
