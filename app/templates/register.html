@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% from 'macros.html' import render_field %}
 {% block content %}
 <section class="relative py-20 2xl:py-10 overflow-hidden">
   <div class="container px-4 mx-auto">
@@ -33,36 +34,10 @@
               <div class="w-full h-px bg-gray-300"></div>
             </div>
             <form method="POST">
-              <div class="mb-6">
-                <label class="block mb-1.5 text-sm text-gray-900 font-semibold" for="">Email</label>
-                {{ form.email(class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg") }}
-                <!-- <input class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg" type="email" name="email"> -->
-              </div>
-              <div class="mb-7">
-                <div class="flex mb-1.5 items-center justify-between">
-                  <label class="block text-sm text-gray-900 font-semibold" for="">Username</label>
-                </div>
-                <div class="relative">
-                  {{ form.username(class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg") }}
-                  <!-- <input class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg" type="text" name="username"> -->
-                </div>
-              </div>
-              <div class="mb-7">
-                <div class="flex mb-1.5 items-center justify-between">
-                  <label class="block text-sm text-gray-900 font-semibold" for="">Contraseña</label>
-                </div>
-                <div class="relative">
-                  {{ form.password(class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg") }}
-                  {% if form.password.errors %}
-                    <div class="text-sm text-red-500">
-                      {% for error in form.password.errors %}
-                        {{ error }}
-                      {% endfor %}
-                    </div>
-                  {% endif %}
-                  <!-- <input class="w-full py-3 px-4 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-purple-500 focus:outline-purple rounded-lg" type="password" name="password"> -->
-                </div>
-              </div>
+              {{ form.hidden_tag() }}
+              {{ render_field(form.email) }}
+              {{ render_field(form.username) }}
+              {{ render_field(form.password) }}
               <button class="relative group block w-full mb-32 py-3 px-5 text-center text-sm font-semibold text-orange-50 bg-orange-900 rounded-full overflow-hidden" type="submit">
                 <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                 <span class="relative">Login</span>

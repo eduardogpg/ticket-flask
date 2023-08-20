@@ -11,6 +11,7 @@
         <span class="font-serif italic">ti.</span>
       </h1>
     </div>
+    {% for event in events %}
     <div class="max-w-5xl mx-auto">
       <div class="py-12 border-t-2 border-gray-100">
         <div class="flex flex-wrap lg:flex-nowrap items-center">
@@ -19,9 +20,10 @@
           </div>
           <div class="w-full lg:w-9/12 px-4 mb-10 lg:mb-0">
             <div class="max-w-2xl">
-              <span class="block text-gray-400 mb-1">Jul 20, 2022</span>
+              <span class="block text-gray-400 mb-1 text-2xl">{{ event.title }}</span>
+              <span class="block text-gray-400 mb-1 text-sm">Jul 20, 2022</span>
               <p class="text-2xl font-semibold text-gray-900">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                {{ event.description }}
               </p>
             </div>
           </div>
@@ -43,6 +45,7 @@
         </a>
       </div>
     </div>
+    {% endfor %}
   </div>
 </section>
 {% endblock %}
