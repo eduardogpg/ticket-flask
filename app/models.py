@@ -32,6 +32,9 @@ class User(Model):
         self.password = generate_password_hash(password)
 
 
+    def has_ticket(self, event):
+        pass
+
 
 class Event(Model):
     name = CharField(max_length=200)
@@ -55,4 +58,14 @@ class Event(Model):
 
     @property
     def available_sets(self):
-        return self.participants - 0
+        return self.participants - self.tickets.count()
+
+
+class Ticket(Model):
+    user = ForeignKeyField(User, backref='tickets')
+    event = ForeignKeyField(Event, backref='tickets')
+    created_at = DateTimeField(default=datetime.datetime.now)
+
+    class Meta:
+        database = db
+        db_table = 'tickets'

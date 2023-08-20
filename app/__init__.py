@@ -23,9 +23,9 @@ def make_app():
     from .views import main_blueprint
     app.register_blueprint(main_blueprint)
 
-    from .models import User, Event
+    from .models import User, Event, Ticket
     
     with app.app_context():
-        db.create_tables([User, Event])
+        db.create_tables([User, Event, Ticket])
 
     return app

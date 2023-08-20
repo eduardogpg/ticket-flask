@@ -6,9 +6,9 @@ from flask import Blueprint
 from flask import render_template
 
 from . import db
-
 from .models import User
 from .models import Event
+from .models import Ticket
 
 from .forms import EventForm
 from .forms import RegisterForm
@@ -59,29 +59,33 @@ def dashboard():
 
 
 @main_blueprint.route('/ticket/<int:id>')
-def ticket_show(id):
-    return render_template('ticket.html')
+@login_required
+def tickets_show(id):
+    user = User.get(User.id == session['user_id'])
+    ticket = Ticket.get(Ticket.id == id)
+
+    if not ticket.user == user:
+        return redirect(url_for('main.dashboard'))
+
+    return render_template('ticket.html', event=ticket.event)
 
 
 @main_blueprint.route('/events/<int:id>/tickets/new', methods=['GET'])
 @login_required
-def ticket_new(id):
-    event = None # Event.query.get(id)
-    user_id = session['user_id']
+def tickets_new(id):
+    event = Event.get(Event.id == id)
+    user = User.get(User.id == session['user_id'])
 
-    if event.tickets.count() > 10:
-        return redirect(url_for('main.event_show', id=event.id))
+    if event.available_sets == 0:
+        return redirect(url_for('main.events_shows', id=event.id))
 
-    ticket = User(
-        user_id=user_id,
-        event_id=event.id
-    )
+    ticket = event.tickets.select().where(Ticket.user == user).first()
+    
+    if not ticket:
+        ticket = Ticket.create(user=user, event=event)
 
-    db.session.add(ticket)
-    db.session.commit()
-
-    return redirect(url_for('main.ticket_show', id=event.id))
-
+    return redirect(url_for('main.tickets_show', id=ticket.id))
+    
 
 @main_blueprint.route('/events/new', methods=['GET', 'POST'])
 @login_required
@@ -107,9 +111,10 @@ def events_new():
 @main_blueprint.route('/event/<int:id>/show')
 def events_show(id):
     event = Event.get(Event.id == id)
-    
+    user = User.get(User.id == session['user_id'])
+
     if not event:
         pass
     
-    ticket = None
+    ticket = event.tickets.select().where(Ticket.user == user).first()
     return render_template('events/show.html', event=event, ticket=ticket)

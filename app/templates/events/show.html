@@ -48,7 +48,7 @@
             </div>
             <div class="flex flex-wrap items-center justify-between">
               {% if ticket %}
-                <a class="relative group inline-block w-full sm:w-auto py-4 px-6 text-orange-50 font-semibold bg-orange-900 rounded-full overflow-hidden" href="{{ url_for('main.ticket_show', id=ticket.id) }}">
+                <a class="relative group inline-block w-full sm:w-auto py-4 px-6 text-orange-50 font-semibold bg-orange-900 rounded-full overflow-hidden" href="{{ url_for('main.tickets_show', id=ticket.id) }}">
                   <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                   <div class="relative flex items-center justify-center">
                     <span class="mr-2">Ver mi entrada</span>
@@ -60,7 +60,7 @@
                   </div>
                 </a>
               {% elif event.available_sets  %}
-                <a class="relative group inline-block w-full sm:w-auto py-4 px-6 text-orange-50 font-semibold bg-orange-900 rounded-full overflow-hidden" href="{{ url_for('main.ticket_new', id=event.id) }}">
+                <a class="relative group inline-block w-full sm:w-auto py-4 px-6 text-orange-50 font-semibold bg-orange-900 rounded-full overflow-hidden" href="{{ url_for('main.tickets_new', id=event.id) }}">
                   <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                   <div class="relative flex items-center justify-center">
                     <span class="mr-2">
