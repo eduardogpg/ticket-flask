@@ -23,7 +23,7 @@ class User(Model):
     email = CharField(unique=True, null=False)
     password = CharField(null=False)
     created_at = DateTimeField(default=datetime.datetime.now)
-
+    
     class Meta:
         database = db
         db_table = 'users'

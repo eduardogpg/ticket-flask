@@ -109,6 +109,7 @@ def events_new():
 
 
 @main_blueprint.route('/event/<int:id>/show')
+@login_required
 def events_show(id):
     event = Event.get(Event.id == id)
     user = User.get(User.id == session['user_id'])
@@ -118,3 +119,13 @@ def events_show(id):
     
     ticket = event.tickets.select().where(Ticket.user == user).first()
     return render_template('events/show.html', event=event, ticket=ticket)
+
+
+
+@main_blueprint.route('/events/admin')
+@login_required
+def events_admin():
+    user = User.get(User.id == session['user_id'])
+    events = user.events
+        
+    return render_template('events/admin.html', form=user, events=events)
